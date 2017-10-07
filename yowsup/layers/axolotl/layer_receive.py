@@ -186,7 +186,6 @@ class AxolotlReceivelayer(AxolotlBaseLayer):
             raise ValueError("Empty message")
 
         if m.HasField("sender_key_distribution_message"):
-            handled = True
             axolotlAddress = AxolotlAddress(encMessageProtocolEntity.getParticipant(False), 0)
             self.handleSenderKeyDistributionMessage(m.sender_key_distribution_message, axolotlAddress)
 
