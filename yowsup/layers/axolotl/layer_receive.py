@@ -195,9 +195,6 @@ class AxolotlReceivelayer(AxolotlBaseLayer):
         elif m.HasField("contact_message"):
             handled = True
             self.handleContactMessage(node, m.contact_message)
-        elif m.HasField("url_message"):
-            handled = True
-            self.handleUrlMessage(node, m.url_message)
         elif m.HasField("location_message"):
             handled = True
             self.handleLocationMessage(node, m.location_message)
