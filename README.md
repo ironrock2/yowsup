@@ -23,7 +23,7 @@ Yowsup is a python library that enables you build application which use WhatsApp
 ## Installation
 
  - Requires python3.0 + (python2.6 + no longer support)
- - Required python packages: python-dateutil,
+ - Required python packages: python-dateutil, libmagickwand-dev
  - Required python packages for end-to-end encryption: protobuf, pycrypto, python-axolotl-curve25519
  - Required python packages for yowsup-cli: argparse, readline (or pyreadline for windows), pillow (for sending images)
 
@@ -76,6 +76,7 @@ Special thanks to:
 - [bahtiarp](https://github.com/bahtiarp)
 - [langioletto](https://github.com/langioletto)
 - [ventrixcode](https://github.com/ventrixcode)
+- [pabloruan0710](https://github.com/pabloruan0710)
 
 
 and everyone else on the [WhatsAPI](https://github.com/mgp25/WhatsAPI-Official) project for their contributions to yowsup and the amazing effort they put into WhatsAPI, the PHP WhatsApp library
