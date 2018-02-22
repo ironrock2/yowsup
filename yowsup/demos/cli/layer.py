@@ -421,7 +421,6 @@ class YowsupCliLayer(Cli, YowInterfaceLayer):
             errorFn = lambda errorEntity, originalEntity: self.onRequestUploadError(jid, path, errorEntity, originalEntity)
             self._sendIq(entity, successFn, errorFn)
 
-            self._sendIq(entity, successFn, errorFn)
     @clicmd("Send typing state")
     def state_typing(self, jid):
         if self.assertConnected():
@@ -516,7 +515,7 @@ class YowsupCliLayer(Cli, YowInterfaceLayer):
             messageOut = self.getMediaMessageBody(message)
         else:
             messageOut = "Unknown message type %s " % message.getType()
-            print(messageOut.toProtocolTreeNode())
+            logger.error(messageOut.toProtocolTreeNode())
 
 
         formattedDate = datetime.datetime.fromtimestamp(message.getTimestamp()).strftime('%d-%m-%Y %H:%M')

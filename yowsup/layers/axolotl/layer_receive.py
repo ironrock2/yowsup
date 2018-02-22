@@ -22,6 +22,7 @@ from axolotl.axolotladdress import AxolotlAddress
 from axolotl.groups.senderkeyname import SenderKeyName
 from axolotl.groups.groupsessionbuilder import GroupSessionBuilder
 from axolotl.protocol.senderkeydistributionmessage import SenderKeyDistributionMessage
+from axolotl.ecc.curve import Curve
 
 import binascii
 import logging
@@ -417,7 +418,7 @@ class AxolotlReceivelayer(AxolotlBaseLayer):
                                             signedKeyTuple, preKeysDict, Curve.DJB_TYPE, self.adjustId(registrationId))
 
         onResult = lambda _, __: self.persistKeys(registrationId, identityKeyPair, preKeys, signedPreKey, fresh)
-        self._sendIq(setKeysIq, onResult, self.onSentKeysError)
+        self._sendIq(setKeysIq, onResult) # TODO: reintroduce error handler (was _sendIq(setKeysIq, onResult, self.onSentKeysError))
 
     def persistKeys(self, registrationId, identityKeyPair, preKeys, signedPreKey, fresh):
         total = len(preKeys)
