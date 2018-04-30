@@ -229,6 +229,8 @@ class AxolotlReceivelayer(AxolotlBaseLayer):
         if m.HasField("sender_key_distribution_message"):
             axolotlAddress = AxolotlAddress(encMessageProtocolEntity.getParticipant(False), 0)
             self.handleSenderKeyDistributionMessage(m.sender_key_distribution_message, axolotlAddress)
+            self.toLower(OutgoingReceiptProtocolEntity(node["id"], node["from"], read= True, participant=node["participant"]).toProtocolTreeNode())
+            return
 
         if m.HasField("conversation"):
             handled = True
