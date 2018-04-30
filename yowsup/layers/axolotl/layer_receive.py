@@ -226,6 +226,12 @@ class AxolotlReceivelayer(AxolotlBaseLayer):
         if not m or not serializedData:
             raise ValueError("Empty message")
 
+        logger.debug("==== parseAndHandleMessageProto ====")
+        logger.debug(m)
+        
+        logger.debug("==== m.HasField(sender_key_distribution_message)? ====")
+        logger.debug(m.HasField("sender_key_distribution_message"))
+        
         if m.HasField("sender_key_distribution_message"):
             axolotlAddress = AxolotlAddress(encMessageProtocolEntity.getParticipant(False), 0)
             self.handleSenderKeyDistributionMessage(m.sender_key_distribution_message, axolotlAddress)
@@ -233,26 +239,34 @@ class AxolotlReceivelayer(AxolotlBaseLayer):
             return
 
         if m.HasField("conversation"):
+            logger.debug("HasField Conversation!")
             handled = True
             self.handleConversationMessage(node, m.conversation)
         elif m.HasField("contact_message"):
+            logger.debug("HasField Contact_message!")
             handled = True
             self.handleContactMessage(node, m.contact_message)
         elif m.HasField("location_message"):
+            logger.debug("HasField Location_message!")
             handled = True
             self.handleLocationMessage(node, m.location_message)
         elif m.HasField("image_message"):
+            logger.debug("HasField Image_message!")
             handled = True
             self.handleImageMessage(node, m.image_message)
         elif m.HasField("video_message"):
+            logger.debug("HasField Video_message!")
             handled = True
             self.handleVideoMessage(node, m.video_message)
         elif m.HasField("audio_message"):
+            logger.debug("HasField Audio_message!")
             self.handleAudioMessage(node, m.audio_message)
         elif m.HasField("document_message"):
+            logger.debug("HasField Document_message!")
             handled = True
             self.handleDocumentMessage(node, m.document_message)
         elif not handled:
+            logger.debug("Unhandled!")
             raise ValueError("Unhandled")
 
     def handleSenderKeyDistributionMessage(self, senderKeyDistributionMessage, axolotlAddress):
