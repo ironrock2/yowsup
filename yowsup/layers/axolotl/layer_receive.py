@@ -267,7 +267,6 @@ class AxolotlReceivelayer(AxolotlBaseLayer):
             self.handleDocumentMessage(node, m.document_message)
         elif not handled:
             logger.debug("Unhandled!")
-            raise ValueError("Unhandled")
 
     def handleSenderKeyDistributionMessage(self, senderKeyDistributionMessage, axolotlAddress):
         groupId = senderKeyDistributionMessage.groupId
